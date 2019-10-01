@@ -5,7 +5,7 @@ import { hchacha20InitState } from "./hchacha20_init_state.ts";
 
 const {
   readFileSync,
-  platform: { os }
+  build: { os }
 } = Deno;
 
 const DIRNAME =
