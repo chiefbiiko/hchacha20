@@ -1,8 +1,8 @@
 # hchacha20
 
-[![Travis](http://img.shields.io/travis/chiefbiiko/hchacha20.svg?style=flat)](http://travis-ci.org/chiefbiiko/hchacha20) [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/chiefbiiko/hchacha20?branch=master&svg=true)](https://ci.appveyor.com/project/chiefbiiko/hchacha20)
+![ci](https://github.com/chiefbiiko/hchacha20/workflows/ci/badge.svg)
 
-HChaCha20 PRF.
+HChaCha20 PRF
 
 Special-purpose hashing, such as X25519 key derivation, or XChacha20 initialization. If in doubt, do not use.
 
