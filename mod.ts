@@ -1,4 +1,4 @@
-import { chacha20QuarterRound } from "https://denopkg.com/chiefbiiko/chacha20/chacha20_quarter_round/chacha20_quarter_round.ts";
+import { chacha20QuarterRound } from "./deps.ts";
 import { hchacha20InitState } from "./hchacha20_init_state/hchacha20_init_state.ts";
 import { numberToLittleEndianBytes } from "./util/util.ts";
 

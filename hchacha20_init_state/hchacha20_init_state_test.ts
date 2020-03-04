@@ -1,6 +1,4 @@
-import { test, runIfMain } from "https://deno.land/std/testing/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
-import { encode } from "https://denopkg.com/chiefbiiko/std-encoding/mod.ts";
+import { assertEquals, encode } from "./../test_deps.ts";
 import { hchacha20InitState } from "./hchacha20_init_state.ts";
 
 const {
@@ -8,8 +6,7 @@ const {
   build: { os }
 } = Deno;
 
-const DIRNAME =
-  (os !== "win" ? "/" : "") +
+const DIRNAME = (os !== "win" ? "/" : "") +
   import.meta.url.replace(/^file:\/+|\/[^/]+$/g, "");
 
 interface TestVector {
@@ -24,7 +21,7 @@ function loadTestVectors(): TestVector[] {
       readFileSync(`${DIRNAME}/hchacha20_init_state_test_vectors.json`)
     )
   ).map(
-    (testVector: { [key: string]: any }): TestVector => ({
+    (testVector: { [key: string]: any; }): TestVector => ({
       key: encode(testVector.key, "hex"),
       nonce: encode(testVector.nonce, "hex"),
       expected: Uint32Array.from(testVector.expected)
@@ -37,7 +34,7 @@ const testVectors: TestVector[] = loadTestVectors();
 
 testVectors.forEach(
   ({ key, nonce, expected }: TestVector, i: number): void => {
-    test({
+    Deno.test({
       name: `hchacha20InitState [${i}]`,
       fn(): void {
         assertEquals(hchacha20InitState(key, nonce), expected);
@@ -45,5 +42,3 @@ testVectors.forEach(
     });
   }
 );
-
-runIfMain(import.meta, { parallel: true });
